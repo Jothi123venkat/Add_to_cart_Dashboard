@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Dashboard from './Components/Dashboard'
+import { Route, Routes } from 'react-router-dom'
+import Fav from './Components/Fav'
 
-function App() {
+const App = () => {
+   const [cartItems,setCartItems]=useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Cart items :{ cartItems.length}</h1>
+     <Routes>
+      <Route path="/" element={<Dashboard  cartItems={cartItems} setCartItems={setCartItems}/>} />
+      <Route path="/Fav" element={<Fav  cartItems={cartItems} setCartItems={setCartItems}/>} />
+     </Routes>
+     
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
